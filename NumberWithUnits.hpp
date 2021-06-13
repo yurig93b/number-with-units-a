@@ -14,34 +14,34 @@ namespace ariel{
         double val;
 
         public:
+            NumberWithUnits(int val, const std::string &unit);
             NumberWithUnits(double val, const std::string &unit);
             double get_val() const;
 
             static void read_units(std::ifstream &ifs);
 
-            friend NumberWithUnits operator+(const NumberWithUnits &n1, const NumberWithUnits &n2);
+            NumberWithUnits operator+(const NumberWithUnits &n2);
 
-            friend NumberWithUnits operator+(const NumberWithUnits &n1);
-            friend NumberWithUnits& operator+=(NumberWithUnits &n1, const NumberWithUnits &n2);
-            friend NumberWithUnits operator-(const NumberWithUnits &n1, const NumberWithUnits &n2);
-            friend NumberWithUnits operator-(const NumberWithUnits &n1);
-            friend NumberWithUnits& operator-=(NumberWithUnits &n1, const NumberWithUnits &n2);
+            NumberWithUnits operator+();
+            NumberWithUnits& operator+=(const NumberWithUnits &n2);
+            NumberWithUnits operator-(const NumberWithUnits &n2);
+            NumberWithUnits operator-();
+            NumberWithUnits& operator-=(const NumberWithUnits &n2);
 
-            friend bool operator==(const NumberWithUnits &n1, const NumberWithUnits &n2);
-            friend bool operator!=(const NumberWithUnits &n1, const NumberWithUnits &n2);
+            bool operator==(const NumberWithUnits &n2) const;
+            bool operator!=(const NumberWithUnits &n2) const;
 
-            friend bool operator<(const NumberWithUnits &n1, const NumberWithUnits &n2);
-            friend bool operator<=(const NumberWithUnits &n1, const NumberWithUnits &n2);
-            friend bool operator>(const NumberWithUnits &n1, const NumberWithUnits &n2);
-            friend bool operator>=(const NumberWithUnits &n1, const NumberWithUnits &n2);
+            bool operator<(const NumberWithUnits &n2) const;
+            bool operator<=(const NumberWithUnits &n2) const;
+            bool operator>(const NumberWithUnits &n2) const;
+            bool operator>=(const NumberWithUnits &n2) const;
 
-            friend NumberWithUnits& operator++(NumberWithUnits &n1);
-            friend NumberWithUnits& operator--(NumberWithUnits &n1);
-            friend NumberWithUnits operator++(const NumberWithUnits &n1, int _);
-            friend NumberWithUnits operator--(const NumberWithUnits &n1, int _);
+            NumberWithUnits& operator++();
+            NumberWithUnits& operator--();
+            NumberWithUnits operator++(int _);
+            NumberWithUnits operator--(int _);
 
             friend NumberWithUnits operator* (double factor, const NumberWithUnits &n1);
-
             friend std::ostream& operator<<( std::ostream &output, const NumberWithUnits &n1);
             friend std::istream& operator>>( std::istream  &input, NumberWithUnits &n1);
 

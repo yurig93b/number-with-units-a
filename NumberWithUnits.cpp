@@ -6,6 +6,10 @@
 
 using namespace ariel;
 
+NumberWithUnits::NumberWithUnits(int val, const std::string &unit){
+    this->val = (double)val;
+}
+
 NumberWithUnits::NumberWithUnits(double val, const std::string &unit){
     this->val = val;
 }
@@ -18,72 +22,72 @@ void NumberWithUnits::read_units(std::ifstream &ifs) {
 
 }
 
-NumberWithUnits ariel::operator+(const NumberWithUnits &n1, const NumberWithUnits &n2) {
+NumberWithUnits NumberWithUnits::operator+(const NumberWithUnits &n2) {
     return NumberWithUnits(0, "dummy");
 }
 
-NumberWithUnits ariel::operator+(const NumberWithUnits &n1) {
+NumberWithUnits NumberWithUnits::operator+() {
     return NumberWithUnits(0, "dummy");
 }
 
 
-NumberWithUnits &ariel::operator+=(NumberWithUnits &n1, const NumberWithUnits &n2) {
-    return n1;
+NumberWithUnits &NumberWithUnits::operator+=(const NumberWithUnits &n2) {
+    return *this;
 }
 
-NumberWithUnits ariel::operator-(const NumberWithUnits &n1, const NumberWithUnits &n2) {
+NumberWithUnits NumberWithUnits::operator-(const NumberWithUnits &n2) {
     return NumberWithUnits(0, "dummy");
 }
 
-NumberWithUnits ariel::operator-(const NumberWithUnits &n1) {
-    return n1;
+NumberWithUnits NumberWithUnits::operator-() {
+    return *this;
 }
 
-NumberWithUnits &ariel::operator-=(NumberWithUnits &n1, const NumberWithUnits &n2) {
-    return n1;
+NumberWithUnits &NumberWithUnits::operator-=(const NumberWithUnits &n2) {
+    return *this;
 }
 
 //
-bool ariel::operator==(const NumberWithUnits &n1, const NumberWithUnits &n2) {
+bool NumberWithUnits::operator==(const NumberWithUnits &n2) const{
     return true;
 }
 
-bool ariel::operator!=(const NumberWithUnits &n1, const NumberWithUnits &n2) {
-    return true;
-}
-
-//
-bool ariel::operator<(const NumberWithUnits &n1, const NumberWithUnits &n2) {
-    return true;
-}
-
-bool ariel::operator<=(const NumberWithUnits &n1, const NumberWithUnits &n2) {
-    return true;
-}
-
-bool ariel::operator>(const NumberWithUnits &n1, const NumberWithUnits &n2) {
-    return true;
-}
-
-bool ariel::operator>=(const NumberWithUnits &n1, const NumberWithUnits &n2) {
+bool NumberWithUnits::operator!=(const NumberWithUnits &n2) const{
     return true;
 }
 
 //
-NumberWithUnits &ariel::operator++(NumberWithUnits &n1) {
-    return n1;
+bool NumberWithUnits::operator<(const NumberWithUnits &n2) const{
+    return true;
 }
 
-NumberWithUnits &ariel::operator--(NumberWithUnits &n1) {
-    return n1;
+bool NumberWithUnits::operator<=(const NumberWithUnits &n2) const{
+    return true;
 }
 
-NumberWithUnits ariel::operator++(const NumberWithUnits &n1, int _) {
-    return n1;
+bool NumberWithUnits::operator>(const NumberWithUnits &n2) const{
+    return true;
 }
 
-NumberWithUnits ariel::operator--(const NumberWithUnits &n1, int _) {
-    return n1;
+bool NumberWithUnits::operator>=(const NumberWithUnits &n2) const{
+    return true;
+}
+
+//
+NumberWithUnits &NumberWithUnits::operator++() {
+    return *this;
+}
+
+NumberWithUnits &NumberWithUnits::operator--() {
+    return *this;
+}
+
+NumberWithUnits NumberWithUnits::operator++(int _) {
+    return *this;
+}
+
+NumberWithUnits NumberWithUnits::operator--(int _) {
+    return *this;
 }
 
 //
